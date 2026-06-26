@@ -1,0 +1,9 @@
+{
+  "name": "sd-cat-playground",
+  "version": "1.0.0",
+  "description": "SD 고양이 캐릭터가 화면을 뛰어다니는 인터랙티브 웹사이트",
+  "private": true,
+  "scripts": {
+    "deploy": "npx wrangler pages deploy . --project-name=sd-cat-playground"
+  }
+}
