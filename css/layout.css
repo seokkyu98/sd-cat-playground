@@ -113,6 +113,66 @@ body {
   padding: 32px 24px 64px;
 }
 
+/* ---- Game Panel ---- */
+.game-panel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--color-surface);
+  border: 1.5px solid #f0e0c0;
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+}
+
+.game-panel__stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.game-panel__icon { font-size: 1.2rem; line-height: 1; }
+.game-panel__label { font-size: 0.8rem; color: var(--color-muted); }
+.game-panel__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 28px;
+  transition: transform 0.15s ease;
+}
+.game-panel__value.catnip-pop {
+  animation: catnip-pop 0.3s ease;
+}
+.game-panel__sub { font-size: 0.75rem; color: var(--color-muted); }
+
+.btn-summon {
+  margin-left: auto;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-summon:hover:not(:disabled) {
+  background: #e0941a;
+  transform: translateY(-1px);
+}
+.btn-summon:active:not(:disabled) { transform: translateY(0); }
+.btn-summon:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-summon__cost { font-size: 0.8rem; opacity: 0.85; }
+
+@keyframes catnip-pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
 /* ---- Status bar ---- */
 .cat-status-bar {
   display: flex;
@@ -228,6 +288,71 @@ body {
 .site-footer a { color: var(--color-primary); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+
+/* ---- Summon Overlay ---- */
+.summon-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: overlay-fade 2.2s ease forwards;
+}
+
+.summon-overlay__content { text-align: center; }
+
+.summon-overlay__rank {
+  font-size: clamp(5rem, 18vw, 9rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(255,255,255,0.7);
+  animation: rank-pop 2.2s ease forwards;
+}
+
+.summon-overlay__text {
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  animation: text-rise 2.2s ease 0.25s forwards;
+  opacity: 0;
+}
+
+/* 랭크별 배경색 */
+.rank-overlay--d { background: rgba(100, 100, 100, 0.82); }
+.rank-overlay--c { background: rgba(56,  142,  60, 0.82); }
+.rank-overlay--b { background: rgba(21,  101, 192, 0.82); }
+.rank-overlay--a { background: rgba(123,  31, 162, 0.82); }
+.rank-overlay--s {
+  background: radial-gradient(ellipse at center,
+    rgba(255, 200, 0, 0.92) 0%,
+    rgba(255, 140, 0, 0.88) 60%,
+    rgba(200, 80, 0, 0.85) 100%);
+}
+
+@keyframes overlay-fade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  72%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes rank-pop {
+  0%   { transform: scale(0.2); opacity: 0; }
+  28%  { transform: scale(1.15); opacity: 1; }
+  42%  { transform: scale(1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes text-rise {
+  0%   { opacity: 0; transform: translateY(16px); }
+  30%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; }
+}
 
 /* =============================================
    Responsive

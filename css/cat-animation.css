@@ -259,6 +259,130 @@
   50%       { transform: scaleY(1.04); }
 }
 
+/* =============================================
+   Image-based cat character (.cat-image-character)
+   flip 레이어(.cat-image-flip)와 bounce 레이어(.cat-image-bounce)를
+   분리하여 transform 충돌 방지
+   ============================================= */
+
+.cat-image-character {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  z-index: 999;
+  cursor: pointer;
+  user-select: none;
+  will-change: left, top;
+}
+
+.cat-image-character img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 방향 반전 — flip 레이어에만 scaleX 적용 */
+.cat-image-character.facing-left .cat-image-flip {
+  transform: scaleX(-1);
+}
+
+/* 걷기 — bounce 레이어에 translateY 애니메이션 */
+.cat-image-character.state-walk .cat-image-bounce {
+  animation: img-cat-bounce 0.4s ease-in-out infinite;
+}
+
+/* 달리기 — 더 빠른 bounce */
+.cat-image-character.state-run .cat-image-bounce {
+  animation: img-cat-bounce 0.18s ease-in-out infinite;
+}
+
+/* 쉬기 — 숨쉬기 효과 */
+.cat-image-character.state-rest .cat-image-bounce {
+  animation: img-cat-breathe 2s ease-in-out infinite;
+}
+
+@keyframes img-cat-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes img-cat-breathe {
+  0%, 100% { transform: scaleY(1); }
+  50%       { transform: scaleY(1.05); }
+}
+
+/* ── 랭크 뱃지 ────────────────────────────────── */
+
+.cat-rank-badge {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: #fff;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  letter-spacing: 0;
+}
+
+.rank-badge--d { background: #888; }
+.rank-badge--c { background: #4caf50; }
+.rank-badge--b { background: #2196f3; }
+.rank-badge--a { background: #9c27b0; }
+.rank-badge--s {
+  background: linear-gradient(135deg, #ff9800, #ffd700);
+  box-shadow: 0 2px 10px rgba(255,180,0,0.6);
+  animation: badge-s-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes badge-s-glow {
+  0%, 100% { box-shadow: 0 2px 10px rgba(255,180,0,0.5); }
+  50%       { box-shadow: 0 2px 18px rgba(255,180,0,0.9); }
+}
+
+/* ── 소환 스폰인 애니메이션 ─────────────────────── */
+
+.cat-summoned {
+  animation: cat-spawn-in 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cat-spawn-in {
+  0%   { opacity: 0; transform: scale(0.2) rotate(-15deg); }
+  65%  { transform: scale(1.12) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ── 이미지 로드 실패 시 폴백 ───────────────────── */
+
+.cat-image-bounce.cat-img-fallback {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 8px auto 0;
+}
+.cat-image-bounce.cat-img-fallback::after { content: '🐱'; }
+
+.cat-img-fallback.fallback-d { background: #ddd; }
+.cat-img-fallback.fallback-c { background: #c8e6c9; }
+.cat-img-fallback.fallback-b { background: #bbdefb; }
+.cat-img-fallback.fallback-a { background: #e1bee7; }
+.cat-img-fallback.fallback-s {
+  background: linear-gradient(135deg, #ffe0b2, #fff9c4);
+  box-shadow: 0 0 12px rgba(255,180,0,0.5);
+}
+
 /* Click thought bubble */
 .thought-bubble {
   position: absolute;

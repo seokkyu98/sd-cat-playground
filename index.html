@@ -53,6 +53,25 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
+    <!-- ===== 게임 패널 ===== -->
+    <div class="game-panel" aria-label="방치형 게임 현황">
+      <div class="game-panel__stat">
+        <span class="game-panel__icon" aria-hidden="true">🌿</span>
+        <span class="game-panel__label">캣닢</span>
+        <span id="catnip-count" class="game-panel__value">0</span>
+        <span id="catnip-rate" class="game-panel__sub">+0 / 10초</span>
+      </div>
+      <div class="game-panel__stat">
+        <span class="game-panel__icon" aria-hidden="true">🐱</span>
+        <span class="game-panel__label">고양이</span>
+        <span id="cat-count" class="game-panel__value">0</span>
+        <span class="game-panel__sub">마리</span>
+      </div>
+      <button id="btn-summon" class="btn-summon" disabled aria-label="고양이 소환 (캣닢 100개 필요)">
+        🎲 소환 <span class="btn-summon__cost">(100 🌿)</span>
+      </button>
+    </div>
+
     <!-- 고양이 상태 표시 -->
     <div class="cat-status-bar" aria-live="polite">
       <span class="status-dot" aria-hidden="true"></span>
@@ -154,7 +173,20 @@
     <p>&copy; 2025 냥이 놀이터. All rights reserved.</p>
   </footer>
 
-  <!-- ===== SD Cat Character ===== -->
+  <!-- ===== Image Cat Character (cat_sd_sample.png) ===== -->
+  <div id="cat-sd-sample" class="cat-image-character" role="img" aria-label="SD 고양이 샘플 캐릭터">
+    <div class="cat-image-flip">
+      <div class="cat-image-bounce">
+        <img src="assets/cat_sd_sample_clean.png"
+             alt=""
+             width="80"
+             height="80"
+             onerror="this.closest('.cat-image-character').style.display='none'" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CSS Cat Character ===== -->
   <div id="cat-character" role="img" aria-label="SD 고양이 캐릭터 냥이">
     <div class="cat-body">
       <div class="cat-head">
