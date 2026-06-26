@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="냥이 놀이터 소개 — SD 고양이 인터랙티브 웹사이트 개발 스토리" />
+  <title>소개 — 냥이 놀이터</title>
+  <link rel="stylesheet" href="css/layout.css" />
+  <style>
+    .about-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .about-content h1 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: 24px; }
+    .about-content h2 { font-size: 1.05rem; margin: 28px 0 10px; color: var(--color-text); }
+    .about-content p, .about-content li { font-size: 0.93rem; line-height: 1.8; margin-bottom: 12px; }
+    .about-content ul { padding-left: 20px; }
+    .back-link { display: inline-block; margin: 20px 24px; color: var(--color-primary); text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { text-decoration: underline; }
+    .tech-badge {
+      display: inline-block;
+      background: #fff3dc;
+      border: 1px solid var(--color-primary);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.82rem;
+      margin: 3px;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <span class="logo-icon" aria-hidden="true">🐱</span>
+    <div>
+      <h1>냥이 놀이터</h1>
+      <p>귀여운 SD 고양이가 뛰어노는 인터랙티브 공간</p>
+    </div>
+  </header>
+
+  <a class="back-link" href="index.html">← 메인으로 돌아가기</a>
+
+  <main>
+    <div class="about-content">
+      <h1>냥이 놀이터 소개</h1>
+
+      <p>
+        <strong>냥이 놀이터</strong>는 SD(Super Deformed) 스타일의 고양이 캐릭터가 화면을 자유롭게
+        뛰어다니는 인터랙티브 웹사이트입니다. 외부 라이브러리 없이 순수 HTML, CSS, JavaScript만으로
+        제작된 미니 프로젝트입니다.
+      </p>
+
+      <h2>제작 동기</h2>
+      <p>
+        복잡한 프레임워크 없이도 생동감 있는 웹 경험을 만들 수 있다는 것을 보여주고 싶었습니다.
+        CSS 애니메이션과 requestAnimationFrame만으로 부드러운 캐릭터 움직임을 구현하는 데 집중했습니다.
+      </p>
+
+      <h2>기술 스택</h2>
+      <p>
+        <span class="tech-badge">HTML5</span>
+        <span class="tech-badge">CSS3 Animation</span>
+        <span class="tech-badge">Vanilla JS</span>
+        <span class="tech-badge">requestAnimationFrame</span>
+        <span class="tech-badge">Cloudflare Pages</span>
+      </p>
+
+      <h2>주요 기능</h2>
+      <ul>
+        <li><strong>상태 머신</strong> — 걷기, 달리기, 쉬기 세 가지 상태가 무작위 타이머로 전환됩니다.</li>
+        <li><strong>충돌 감지</strong> — 화면 가장자리에 닿으면 각도를 조절하며 자연스럽게 반사됩니다.</li>
+        <li><strong>클릭 인터랙션</strong> — 고양이를 클릭하면 깜짝 반응과 말풍선이 나타납니다.</li>
+        <li><strong>순수 CSS 캐릭터</strong> — 이미지 파일 없이 CSS div로 SD 고양이를 렌더링합니다.</li>
+        <li><strong>반응형 레이아웃</strong> — 모바일과 데스크탑 모두 최적화된 레이아웃을 제공합니다.</li>
+      </ul>
+
+      <h2>문의</h2>
+      <p>
+        피드백이나 문의사항은 <a href="mailto:contact@example.com">contact@example.com</a>으로 보내주세요.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-links" aria-label="푸터 링크">
+      <a href="privacy-policy.html">개인정보처리방침</a>
+      <a href="about.html">소개</a>
+      <a href="mailto:contact@example.com">문의</a>
+    </nav>
+    <p>&copy; 2025 냥이 놀이터. All rights reserved.</p>
+  </footer>
+</body>
+</html>

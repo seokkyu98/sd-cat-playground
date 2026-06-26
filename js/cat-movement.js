@@ -58,6 +58,14 @@ export const CatMovement = (() => {
     el.classList.add(`state-${newState}`);
     state = newState;
 
+    // Rescale velocity to match new state speed
+    if (newState !== 'rest') {
+      const speed = SPEED[newState];
+      const len   = Math.hypot(vx, vy) || 1;
+      vx = (vx / len) * speed;
+      vy = (vy / len) * speed;
+    }
+
     if (onStateChange) onStateChange(state);
 
     const msgs = {
@@ -173,9 +181,9 @@ export const CatMovement = (() => {
     x = rand(MARGIN, maxX * 0.6);
     y = rand(MARGIN, maxY * 0.6);
 
-    const init = chooseRandomVelocity(SPEED.walk);
-    vx = init.vx;
-    vy = init.vy;
+    const initialVel = chooseRandomVelocity(SPEED.walk);
+    vx = initialVel.vx;
+    vy = initialVel.vy;
 
     el.addEventListener('click', showReaction);
 
